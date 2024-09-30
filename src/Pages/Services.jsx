@@ -136,7 +136,7 @@ const Services = () => {
                                 <option value="cleaner">Cleaners</option>
                                 <option value="electrician">Electricians</option>
                                 <option value="plumber">Plumbers</option>
-                                <option value="carpenter">Carpenters</option>
+                                <option value="carpenter">Carpenters    </option>
                                 <option value="painter">Painters</option>
                                 <option value="gardener">Gardeners</option>
                                 <option value="roofer">Roofers</option>
@@ -208,8 +208,8 @@ const Services = () => {
                     <div className="bg-white rounded-lg w-11/12 md:w-1/2 lg:w-1/3 p-6">
                         <h2 className="text-2xl font-bold mb-4">Booking Confirmation</h2>
                         <p className="mb-4">Are you sure you want to book the service?</p>
-                        <h3 className="text-xl font-semibold">{selectedService?.name}</h3>
-                        <p className="text-gray-600">{selectedService?.desc}</p>
+                        <h3 className="text-xl font-semibold">Name : {selectedService?.name}</h3>
+                        <p className="text-gray-600">info : {selectedService?.desc}</p>
                         <p className="text-gray-800 font-bold mt-2">{selectedService?.price}</p>
                         <p className="text-gray-800 font-bold mt-2">{selectedService?.phone}</p>
                         <p className="text-gray-600">Working Hours: {selectedService?.workingHours}</p>

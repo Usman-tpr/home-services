@@ -1,6 +1,7 @@
 // Register.js
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -9,7 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [notification, setNotification] = useState(''); // New notification state
-
+   const navigate = useNavigate()
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -52,6 +53,7 @@ const Register = () => {
         setTimeout(() => {
           setNotification('');
         }, 5000);
+        navigate("/")
       } else {
         const errorData = await response.json();
         console.error('Registration failed:', errorData);
