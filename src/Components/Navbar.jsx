@@ -44,9 +44,9 @@ const Navbar = () => {
     <nav className="bg-blue-900 text-white px-6 py-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-bold">
+        <Link to='/' className="text-2xl font-bold">
           Home Services
-        </div>
+        </Link>
 
         {/* Hamburger Menu Button for Mobile */}
         <div className="sm:hidden">

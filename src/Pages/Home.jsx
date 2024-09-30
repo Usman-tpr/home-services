@@ -1,6 +1,7 @@
 // Home.js
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const sectionVariants = {
@@ -23,9 +24,9 @@ const Home = () => {
           <div className="text-center text-white p-4">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Your Trusted Partner for Home Services</h1>
             <p className="text-lg md:text-xl mb-8">Quality service providers at your convenience. Book your service now!</p>
-            <button className="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg text-lg transition-colors duration-300">
+            <Link to='/services' className="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg text-lg transition-colors duration-300">
               Book a Service Now
-            </button>
+            </Link>
           </div>
         </div>
       </motion.section>
@@ -102,9 +103,9 @@ const ServiceCard = ({ imageUrl, name, title, price, workingHours }) => {
       <p className="text-lg text-gray-700 mb-2">{title}</p>
       <p className="text-lg mb-2">Price: {price}</p>
       <p className="text-lg mb-4">Working Hours: {workingHours}</p>
-      <button className="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+      <Link to='/services' className="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-lg transition-colors duration-300">
         Book Now
-      </button>
+      </Link>
     </div>
   );
 };
