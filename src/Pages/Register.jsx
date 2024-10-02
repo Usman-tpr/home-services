@@ -10,6 +10,8 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [notification, setNotification] = useState(''); // New notification state
+  const token = localStorage.getItem('HomeToken'); // Retrieve the token from local storage
+
    const navigate = useNavigate()
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -33,14 +35,16 @@ const Register = () => {
       const response = await fetch('http://localhost:5000/user/signup', {
         method: 'POST',
         headers: {
+          'Authorization': `Bearer ${token}`, // Include the token in the authorization header
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData),
       });
-
+         
       if (response.ok) {
         const data = await response.json();
         console.log('Registration successful:', data);
+        localStorage.setItem("HomeToken" , data.token)
         setNotification('Registration successful!'); // Set success message
         // Clear the fields if needed
         setName('');

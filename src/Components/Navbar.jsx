@@ -1,38 +1,36 @@
 // Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const token = localStorage.getItem('HomeToken'); // Retrieve the token from local storage
+  const token = localStorage.getItem('HomeToken'); 
 
   useEffect(() => {
     const fetchUserData = async () => {
+      console.log(token)
       if (token) {
         try {
-          const response = await fetch('http://localhost:5000/user/', {
-            method: 'GET',
+          const response = await axios.get("http://localhost:5000/user/byToken", {
             headers: {
-              'Authorization': `Bearer ${token}`, // Include the token in the authorization header
-              'Content-Type': 'application/json',
-            },
+              Authorization: `Bearer ${token}`
+            }
           });
-
-          if (response.ok) {
-            const userData = await response.json();
-            setUser(userData); // Update the user state with the fetched data
-          } else {
-            console.error('Failed to fetch user data:', response.statusText);
-          }
+          // console.log(response);
+          const userData = response.data; // Access the data directly
+          // console.log("User data:", userData);
+          setUser(userData); // Update the user state with the fetched data
         } catch (error) {
           console.error('Error fetching user data:', error);
         }
       }
     };
-
+  
     fetchUserData();
-  }, [token]); // Run effect when the token changes
+  }, [token]);
+  
+  
 
   const handleLogout = () => {
     localStorage.removeItem('HomeToken'); // Remove token from local storage

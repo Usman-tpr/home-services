@@ -21,9 +21,10 @@ const Profile = () => {
           Authorization: `Bearer ${token}`,
         };
         const response = await axios.get('http://localhost:5000/services/getMy', { headers });
-        const res = await axios.get('http://localhost:5000/user/', { headers });
+        const res = await axios.get('http://localhost:5000/user/byToken', { headers });
           setUser(res.data.body)
         // Correctly set the services state
+        console.log(response)
         setServices(response.data.body); // Assuming the response directly returns the services array
       } catch (error) {
         console.error('Error fetching services:', error);
@@ -94,10 +95,10 @@ const Profile = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {services.map((service) => (
               <div key={service._id} className="bg-gray-100 rounded-lg p-4 shadow-md relative">
-                {console.log(service)}
-                <h4 className="text-xl font-semibold">{service.name}</h4>
-                <p className="text-gray-600">{service.desc}</p>
-                <p className="text-gray-800 font-bold mt-2">{service.price}</p>
+                <h4 className="text-xl font-semibold">Name : {service.name}</h4>
+                <p className="text-gray-600">Desc : {service.desc}</p>
+                <p className="text-gray-800 font-bold mt-2">Price : {service.price}/Hour</p>
+                <p className="text-gray-800 font-bold mt-2">{service.category}</p>
                 <div className="absolute top-2 right-2">
                   <button
                     onClick={() => handleDeleteService(service._id)}
@@ -105,11 +106,7 @@ const Profile = () => {
                   >
                     Delete
                   </button>
-                  <button
-                    className="bg-blue-600 hover:bg-blue-500 text-white px-2 py-1 rounded ml-2"
-                  >
-                    Update
-                  </button>
+
                 </div>
               </div>
             ))}
