@@ -19,7 +19,7 @@ const Navbar = () => {
           });
           // console.log(response);
           const userData = response.data; // Access the data directly
-          // console.log("User data:", userData);
+          console.log("User data:", userData);
           setUser(userData); // Update the user state with the fetched data
         } catch (error) {
           console.error('Error fetching user data:', error);

@@ -1,12 +1,13 @@
 // Login.js
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [notification, setNotification] = useState(''); // New notification state
-
+  const navigate = useNavigate()
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -24,11 +25,14 @@ const Login = () => {
         },
         body: JSON.stringify(loginData),
       });
+  
 
       if (response.ok) {
         const data = await response.json();
         console.log('Login successful:', data);
         setNotification('Login successful!'); // Set success message
+        localStorage.setItem("HomeToken" , data.token)
+        navigate("/services")
 
         // Optionally redirect the user to another page or store user data in context/local storage
 

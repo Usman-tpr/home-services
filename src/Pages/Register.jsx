@@ -14,7 +14,7 @@ const Register = () => {
 
   const location  = useLocation();
 
-  const { isFromProfile } = location?.state
+  const { isFromProfile } = location?.state || false
 
 
    const navigate = useNavigate()
