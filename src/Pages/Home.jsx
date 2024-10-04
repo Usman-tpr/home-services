@@ -24,9 +24,14 @@ const Home = () => {
           <div className="text-center text-white p-4">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Your Trusted Partner for Home Services</h1>
             <p className="text-lg md:text-xl mb-8">Quality service providers at your convenience. Book your service now!</p>
-            <Link to='/services' className="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg text-lg transition-colors duration-300">
+           <div className='space-x-10'>
+           <Link to='/services' className="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg text-lg transition-colors duration-300">
               Book a Service Now
             </Link>
+           <Link to='/profile' className="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg text-lg transition-colors duration-300">
+              Provide a Service Now
+            </Link>
+           </div>
           </div>
         </div>
       </motion.section>

@@ -1,7 +1,7 @@
 // Register.js
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -9,8 +9,13 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [notification, setNotification] = useState(''); // New notification state
-  const token = localStorage.getItem('HomeToken'); // Retrieve the token from local storage
+  const [notification, setNotification] = useState(''); 
+  const token = localStorage.getItem('HomeToken'); 
+
+  const location  = useLocation();
+
+  const { isFromProfile } = location?.state
+
 
    const navigate = useNavigate()
   const handleRegister = async (e) => {
@@ -58,6 +63,9 @@ const Register = () => {
           setNotification('');
         }, 5000);
         navigate("/")
+        if(isFromProfile){
+          navigate("/profile")
+        }
       } else {
         const errorData = await response.json();
         console.error('Registration failed:', errorData);
